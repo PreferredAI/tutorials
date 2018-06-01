@@ -220,6 +220,8 @@ $ python3 test.py --model deep --data_dir ../test_images
 
 ## Dataset and pre-trained models
 
+Run commands below to download the dataset and pre-trained models.
+
 ```bash
 $ cd vs-cnn
 $ chmod +x download.sh
@@ -229,7 +231,7 @@ $ cd src
 
 ## Base Model (VS-CNN)
 
-Evaluate pre-trained model.
+Evaluate pre-trained base model on user dataset.
 
 ```bash
 $ python3 eval_base.py --dataset user
@@ -249,7 +251,7 @@ Avg. Pointwise Accuracy = 0.546
 
 ## Factor Model (uVS-CNN)
 
-Evaluate pre-trained model with trained factor weights.
+Evaluate pre-trained factor model on user dataset.
 
 ```bash
 $ python3 eval_factor.py --dataset user
