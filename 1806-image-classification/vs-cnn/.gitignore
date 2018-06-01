@@ -1,0 +1,8 @@
+data/
+log/
+checkpoints/
+weights/
+
+src/.idea/
+src/__pycache__/
+src/*.pyc

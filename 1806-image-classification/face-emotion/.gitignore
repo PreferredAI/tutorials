@@ -1,0 +1,8 @@
+data/
+log/
+checkpoints/
+
+src/.idea/
+src/__pycache__/
+src/data_prepare.py
+src/*.pyc

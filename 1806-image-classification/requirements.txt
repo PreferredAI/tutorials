@@ -1,0 +1,4 @@
+pillow
+tqdm
+pandas
+scipy
