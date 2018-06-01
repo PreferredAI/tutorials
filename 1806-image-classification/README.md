@@ -209,7 +209,7 @@ $ python3 test.py --model [model_name] --data_dir [path_to_image_folder]
 Some images are already in *test_images* folder for a quick test.
 
 ```bash
-$ python3 test.py --model deep
+$ python3 test.py --model deep --data_dir ../test_images
 ```
 
 
