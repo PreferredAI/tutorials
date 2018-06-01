@@ -21,7 +21,7 @@ class MLP(NN):
   """
     Definition of MLP network with 2 fully-connected layers of 512 dimensions.
   """
-  def __init__(self, dropout_rate, num_classes):
+  def __init__(self, dropout_rate=0.0, num_classes=2):
     NN.__init__(self)
 
     # Flatten image into feature vector
@@ -43,7 +43,7 @@ class Shallow_CNN(NN):
   """
     Definition of shallow CNN with 1 convolutional layer, 1 pooling layer, and 1 fully-connected layer.
   """
-  def __init__(self, dropout_rate, num_classes):
+  def __init__(self, dropout_rate=0.0, num_classes=2):
     NN.__init__(self)
 
     # Convolutional Layer
@@ -68,7 +68,7 @@ class Deep_CNN(NN):
   """
     Definition of deep CNN with 4 convolutional layers, 3 pooling layer, and 1 fully-connected layer.
   """
-  def __init__(self, dropout_rate, num_classes):
+  def __init__(self, dropout_rate=0.0, num_classes=2):
     NN.__init__(self)
 
     # Convolutional Layer #1

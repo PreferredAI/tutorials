@@ -17,9 +17,6 @@ tf.app.flags.DEFINE_string("checkpoint_dir", os.path.join('..', 'checkpoints'),
 tf.app.flags.DEFINE_string("log_dir", os.path.join('..', 'log'),
                            """Path to log folder""")
 
-
-tf.app.flags.DEFINE_integer("num_classes", 2,
-                            """Number of label classes""")
 tf.app.flags.DEFINE_integer("num_checkpoints", 1,
                             """Number of checkpoints to store (default: 1)""")
 tf.app.flags.DEFINE_integer("num_epochs", 10,
@@ -32,13 +29,12 @@ tf.app.flags.DEFINE_integer("display_step", 10,
 tf.app.flags.DEFINE_float("learning_rate", 0.01,
                           """Learning rate""")
 tf.app.flags.DEFINE_float("dropout_rate", 0.5,
-                          """Probability of dropping neurons""")
+                          """Probability of dropping neurons (default: 0.5)""")
 
 tf.app.flags.DEFINE_boolean("allow_soft_placement", True,
                             """Allow device soft device placement""")
 
 FLAGS = tf.app.flags.FLAGS
-
 
 
 def init_data_generator():
@@ -54,11 +50,11 @@ def init_data_generator():
 def init_model():
   # Select the model
   if FLAGS.model == 'mlp':
-    model = MLP(FLAGS.dropout_rate, FLAGS.num_classes)
+    model = MLP(FLAGS.dropout_rate)
   elif FLAGS.model == 'shallow':
-    model = Shallow_CNN(FLAGS.dropout_rate, FLAGS.num_classes)
+    model = Shallow_CNN(FLAGS.dropout_rate)
   elif FLAGS.model == 'deep':
-    model = Deep_CNN(FLAGS.dropout_rate, FLAGS.num_classes)
+    model = Deep_CNN(FLAGS.dropout_rate)
   else:
     raise ValueError('--model should be "mlp", "shallow", or "deep"')
 

@@ -6,7 +6,7 @@ First, you need to clone our repository.
 
 ```bash
 $ git clone https://github.com/PreferredAI/Tutorials.git
-$ cd tutorials/1806-image-classification
+$ cd Tutorials/1806-image-classification
 ```
 
 Run command below to install some required packages.
@@ -96,11 +96,9 @@ optional arguments:
   --data_dir                DATA_DIR
                               Path to data folder (default: ../data)
   --model                   MODEL
-                              Type of CNN model (shallow or deep)
+                              Type of CNN model (mlp or shallow or deep)
   --checkpoint_dir          CHECKPOINT_DIR
                               Path to checkpoint folder (default: ../checkpoint)
-  --num_classes             NUM_CLASSES
-                              Number of label classes (default: 2)
   --num_checkpoints         NUM_CHECKPOINTS
                               Number of checkpoints to store (default: 1)
   --log_dir                 LOG_DIR
@@ -110,7 +108,7 @@ optional arguments:
   --batch_size              BATCH_SIZE
                               Batch Size (default: 32)
   --dropout_rate            DROPOUT_RATE
-                              Probability of dropping neurons (default: 0.25)
+                              Probability of dropping neurons (default: 0.5)
   --learning_rate           LEARNING_RATE
                               Learning rate (default: 0.001)
   --allow_soft_placement    ALLOW_SOFT_PLACEMENT
@@ -211,7 +209,7 @@ $ python3 test.py --model [model_name] --data_dir [path_to_image_folder]
 Some images are already in *test_images* folder for a quick test.
 
 ```bash
-$ python3 test.py --model deep --data_dir ../test_images
+$ python3 test.py --model deep
 ```
 
 

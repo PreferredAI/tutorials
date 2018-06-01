@@ -43,11 +43,11 @@ def load_image(img_file):
 def init_model():
   # Select the model
   if FLAGS.model == 'mlp':
-    model = MLP(dropout_rate=0.0)
+    model = MLP()
   elif FLAGS.model == 'shallow':
-    model = Shallow_CNN(dropout_rate=0.0)
+    model = Shallow_CNN()
   elif FLAGS.model == 'deep':
-    model = Deep_CNN(dropout_rate=0.0)
+    model = Deep_CNN()
   else:
     raise ValueError('--model should be "shallow" or "deep"')
 
