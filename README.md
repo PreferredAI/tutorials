@@ -1,1 +1,1 @@
-# Tutorials by Preferred.AI
+# Tutorials by [Preferred.AI](https://preferred.ai)
