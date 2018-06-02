@@ -198,13 +198,13 @@ Best accuracy = 86.13 %
 
 ## Test trained models with other images
 
-To test our trained model with other images:
+Run test script with the model name and path to the folder containing test images:
 
 ```bash
 $ python3 src/test.py --model [model_name] --data_dir [path_to_image_folder]
 ```
 
-Some images are already in *test_images* folder for a quick test.
+Some images are already in *test_images* folder for a quick run.
 
 ```bash
 $ python3 src/test.py --model deep --data_dir test_images
@@ -213,10 +213,11 @@ $ python3 src/test.py --model deep --data_dir test_images
 
 # Tutorial #2 - Visual Sentiment Analysis
 
+In this tutorial, the models are required a bit of time and computational resources to train. Thus, we provide trained models with a small set of testing data for quick evaluation. The code for training and testing are fully provided for reference purposes. More details can be found in the original [paper](https://www.researchgate.net/publication/320541140_Visual_Sentiment_Analysis_for_Review_Images_with_Item-Oriented_and_User-Oriented_CNN).
 
-## Dataset and pre-trained models
+## Dataset and trained models
 
-Run commands below to download the dataset and pre-trained models.
+Run commands below to download the dataset and trained models.
 
 ```bash
 $ cd vs-cnn
@@ -225,7 +226,7 @@ $ chmod +x download.sh | sh download.sh
 
 ## Base Model (VS-CNN)
 
-Evaluate pre-trained base model on user dataset.
+Evaluate trained base model on user dataset.
 
 ```bash
 $ python3 src/eval_base.py --dataset user
@@ -245,7 +246,7 @@ Avg. Pointwise Accuracy = 0.546
 
 ## Factor Model for User (uVS-CNN)
 
-Evaluate pre-trained factor model on user dataset.
+Evaluate trained factor model on user dataset.
 
 ```bash
 $ python3 src/eval_factor.py --dataset user
