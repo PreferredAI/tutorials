@@ -15,6 +15,8 @@ else
   rm data.tar.gz
 fi
 
+echo
+
 # Checkpoints
 if [ -d "checkpoints" ]; then
   echo "'checkpoints' folder already exists!"
@@ -29,6 +31,8 @@ else
   tar -zxf checkpoints.tar.gz
   rm checkpoints.tar.gz
 fi
+
+echo
 
 # Weights
 if [ -d "weights" ]; then

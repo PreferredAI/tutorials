@@ -6,7 +6,7 @@ from layers import conv, lrn, max_pool, fc
 
 class VS_CNN(object):
 
-  def __init__(self, num_classes, skip_layers=None, finetune_layers=None, weights_path='DEFAULT'):
+  def __init__(self, num_classes, skip_layers=None, finetune_layers=None, weights_path='weights/bvlc_alexnet.npy'):
     # TF placeholder for graph input and output
     self.x = tf.placeholder(tf.float32, [None, 227, 227, 3])
     self.y = tf.placeholder(tf.float32, [None, 2])
@@ -15,11 +15,7 @@ class VS_CNN(object):
     self.num_classes = num_classes
     self.skip_layers = skip_layers
     self.finetune_layers = finetune_layers
-
-    if weights_path == 'DEFAULT':
-      self.weights_path = '../weights/bvlc_alexnet.npy'
-    else:
-      self.weights_path = weights_path
+    self.weights_path = weights_path
 
     # Call the create function to build the computational graph of AlexNet
     self.build()

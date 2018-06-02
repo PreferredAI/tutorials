@@ -11,9 +11,9 @@ from tensorboard_logging import Logger
 # ==================================================
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_string("data_dir", "../data",
+tf.app.flags.DEFINE_string("data_dir", "data",
                            """Path to data folder""")
-tf.app.flags.DEFINE_string("dataset", "business",
+tf.app.flags.DEFINE_string("dataset", "user",
                            """Name of dataset (business or user)""")
 
 tf.app.flags.DEFINE_integer("num_checkpoints", 1,
@@ -22,8 +22,8 @@ tf.app.flags.DEFINE_integer("num_epochs", 20,
                             """Number of training epochs (default: 20)""")
 tf.app.flags.DEFINE_integer("batch_size", 64,
                             """Batch Size (default: 64)""")
-tf.app.flags.DEFINE_integer("num_threads", 48,
-                            """Display after number of steps (default: 48)""")
+tf.app.flags.DEFINE_integer("num_threads", 4,
+                            """Number of threads for data processing (default: 4)""")
 tf.app.flags.DEFINE_integer("display_step", 10,
                             """Display after number of steps (default: 10)""")
 
@@ -50,8 +50,8 @@ finetune_layers = ['fc7', 'fc6', 'conv5', 'conv4', 'conv3', 'conv2', 'conv1']
 train_file = os.path.join(FLAGS.data_dir, FLAGS.dataset, 'train.txt')
 val_file = os.path.join(FLAGS.data_dir, FLAGS.dataset, 'val_Boston.txt')
 
-writer_dir = "../tensorboard/{}".format(FLAGS.dataset)
-checkpoint_dir = "../checkpoints/{}".format(FLAGS.dataset)
+writer_dir = "log/{}".format(FLAGS.dataset)
+checkpoint_dir = "checkpoints/{}".format(FLAGS.dataset)
 
 if tf.gfile.Exists(writer_dir):
   tf.gfile.DeleteRecursively(writer_dir)
@@ -158,7 +158,13 @@ def save_model(sess, saver, epoch):
 def main(_):
   # Place data loading and preprocessing on the cpu
   with tf.device('/cpu:0'):
-    generator = DataGenerator(FLAGS.data_dir, FLAGS.dataset, train_file, val_file, FLAGS.batch_size, FLAGS.num_threads, train_shuffle=True)
+    generator = DataGenerator(data_dir=FLAGS.data_dir,
+                              dataset=FLAGS.dataset,
+                              train_file=train_file,
+                              test_file=val_file,
+                              batch_size=FLAGS.batch_size,
+                              num_threads=FLAGS.num_threads,
+                              train_shuffle=True)
 
   # Initialize model
   model = VS_CNN(num_classes, skip_layers, finetune_layers)

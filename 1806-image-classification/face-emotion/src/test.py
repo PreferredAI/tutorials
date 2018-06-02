@@ -7,14 +7,12 @@ import numpy as np
 
 # Parameters
 # ==================================================
-tf.app.flags.DEFINE_string("data_dir", os.path.join("..", "test_images"),
+tf.app.flags.DEFINE_string("data_dir", "test_images",
                            """Path to the data directory""")
 tf.app.flags.DEFINE_string("model", "mlp",
                            """"Type of model (mlp or shallow or deep)""")
-tf.app.flags.DEFINE_string("checkpoint_dir", os.path.join('..', 'checkpoints'),
+tf.app.flags.DEFINE_string("checkpoint_dir", 'checkpoints',
                            """Path to checkpoint folder""")
-tf.app.flags.DEFINE_string("log_dir", os.path.join('..', 'log'),
-                           """Path to log folder""")
 
 tf.app.flags.DEFINE_boolean("allow_soft_placement", True,
                             """Allow device soft device placement""")
@@ -37,7 +35,8 @@ def load_image(img_file):
   img = center_crop(img)
   img = img.resize((48, 48), Image.ANTIALIAS)
   img = img.convert('L')  # convert image to grayscale
-  return np.asarray(img).reshape(1, 48, 48, 1)
+  img = np.asarray(img) / 255.0 - 0.5
+  return img.reshape(1, 48, 48, 1)
 
 
 def init_model():

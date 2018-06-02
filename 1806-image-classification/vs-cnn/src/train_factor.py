@@ -12,17 +12,17 @@ from tensorboard_logging import Logger
 # ==================================================
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_string("data_dir", "../data",
+tf.app.flags.DEFINE_string("data_dir", "data",
                            """Path to data folder""")
-tf.app.flags.DEFINE_string("dataset", "business",
+tf.app.flags.DEFINE_string("dataset", "user",
                            """Name of dataset (business or user)""")
 
 tf.app.flags.DEFINE_integer("num_checkpoints", 1,
                             """Number of checkpoints to store (default: 1)""")
 tf.app.flags.DEFINE_integer("num_epochs", 30,
                             """Number of training epochs (default: 30)""")
-tf.app.flags.DEFINE_integer("num_threads", 48,
-                            """Display after number of steps (default: 48)""")
+tf.app.flags.DEFINE_integer("num_threads", 4,
+                            """Number of threads for data processing (default: 4)""")
 tf.app.flags.DEFINE_integer("display_step", 1000,
                             """Display after number of steps (default: 1000)""")
 
@@ -50,9 +50,9 @@ train_file = os.path.join(FLAGS.data_dir, FLAGS.dataset, 'train.txt')
 val_file = os.path.join(FLAGS.data_dir, FLAGS.dataset, 'val_Boston.txt')
 
 # Path for tf.summary.FileWriter and to store model checkpoints
-writer_dir = "../tensorboard/f_{}".format(FLAGS.dataset)
-checkpoint_dir = "../checkpoints/f_{}".format(FLAGS.dataset)
-weight_dir = "../weights/{}".format(FLAGS.dataset)
+writer_dir = "log/f_{}".format(FLAGS.dataset)
+checkpoint_dir = "checkpoints/f_{}".format(FLAGS.dataset)
+weight_dir = "weights/{}".format(FLAGS.dataset)
 
 if tf.gfile.Exists(weight_dir):
   tf.gfile.DeleteRecursively(weight_dir)
@@ -189,7 +189,13 @@ def save_model(sess, model, saver, epoch):
 def main(_):
   # Place data loading and preprocessing on the cpu
   with tf.device('/cpu:0'):
-    generator = DataGenerator(FLAGS.data_dir, FLAGS.dataset, train_file, val_file, batch_size=1, num_threads=FLAGS.num_threads, train_shuffle=True)
+    generator = DataGenerator(data_dir=FLAGS.data_dir,
+                              dataset=FLAGS.dataset,
+                              train_file=train_file,
+                              test_file=val_file,
+                              batch_size=1,
+                              num_threads=FLAGS.num_threads,
+                              train_shuffle=True)
 
   # Initialize model
   model = FVS_CNN(num_classes, num_factor_units, skip_layers, finetune_layers)

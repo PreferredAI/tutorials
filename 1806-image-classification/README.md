@@ -25,8 +25,7 @@ I have provided a script to download the dataset.
 
 ```bash
 $ cd face-emotion
-$ chmod +x download.sh
-$ ./download.sh
+$ chmod +x download.sh | sh download.sh
 ```
 
 The data is already split into training and testing sets with the statistics shown in table below.
@@ -86,23 +85,22 @@ The deep CNN architecture can be viewed as:
 Train model:
 
 ```bash
-$ cd src
-$ python3 train.py --model [model_name]
+$ python3 src/train.py --model [model_name]
 ```
 
 ```
 optional arguments:
   -h, --help                show this help message and exit
-  --data_dir                DATA_DIR
-                              Path to data folder (default: ../data)
   --model                   MODEL
                               Type of CNN model (mlp or shallow or deep)
+  --data_dir                DATA_DIR
+                              Path to data folder (default: data)
+  --log_dir                 LOG_DIR
+                              Path to data folder (default: log)
   --checkpoint_dir          CHECKPOINT_DIR
-                              Path to checkpoint folder (default: ../checkpoint)
+                              Path to checkpoint folder (default: checkpoints)
   --num_checkpoints         NUM_CHECKPOINTS
                               Number of checkpoints to store (default: 1)
-  --log_dir                 LOG_DIR
-                              Path to data folder (default: ../log)
   --num_epochs              NUM_EPOCHS
                               Number of training epochs (default: 10)
   --batch_size              BATCH_SIZE
@@ -121,7 +119,7 @@ optional arguments:
 ### Multilayer Perceptron
 
 ```bash
-$ python3 train.py --model mlp
+$ python3 src/train.py --model mlp
 ```
 
 ```text
@@ -140,7 +138,7 @@ Training: 100%|█████████████████████�
 train_loss = 0.4391, train_acc = 79.03 %
 Testing: 100%|███████████████████████████████████████████████████████████████████| 31/31 [00:00<00:00, 35.52it/s, loss=0.18]
 test_loss = 0.5077, test_acc = 74.53 %
-Saved model checkpoint to ..\checkpoints\mlp\epoch_10
+Saved model checkpoint to checkpoints/mlp/epoch_10
 
 Best accuracy = 74.53 %
 ```
@@ -149,7 +147,7 @@ Best accuracy = 74.53 %
 ### Shallow CNN
 
 ```bash
-$ python3 train.py --model shallow
+$ python3 src/train.py --model shallow
 ```
 
 ```text
@@ -175,7 +173,7 @@ Best accuracy = 78.88 %
 ### Deep CNN
 
 ```bash
-$ python3 train.py --model deep
+$ python3 src/train.py --model deep
 ```
 
 ```text
@@ -203,13 +201,13 @@ Best accuracy = 86.13 %
 To test our trained model with other images:
 
 ```bash
-$ python3 test.py --model [model_name] --data_dir [path_to_image_folder]
+$ python3 src/test.py --model [model_name] --data_dir [path_to_image_folder]
 ```
 
 Some images are already in *test_images* folder for a quick test.
 
 ```bash
-$ python3 test.py --model deep --data_dir ../test_images
+$ python3 src/test.py --model deep --data_dir test_images
 ```
 
 
@@ -222,9 +220,7 @@ Run commands below to download the dataset and pre-trained models.
 
 ```bash
 $ cd vs-cnn
-$ chmod +x download.sh
-$ ./download.sh
-$ cd src
+$ chmod +x download.sh | sh download.sh
 ```
 
 ## Base Model (VS-CNN)
@@ -232,12 +228,12 @@ $ cd src
 Evaluate pre-trained base model on user dataset.
 
 ```bash
-$ python3 eval_base.py --dataset user
+$ python3 src/eval_base.py --dataset user
 ```
 
 ```text
 Boston
-Loading data file: ../data/user/val_Boston.txt
+Loading data file: data/user/val_Boston.txt
 Testing: 100%|███████████████████████████████████████████████████████████████████| 19/19 [00:36<00:00,  1.94s/it]
 Pointwise Accuracy = 0.544
 Pairwise Accuracy = 0.546
@@ -247,17 +243,17 @@ Avg. Pointwise Accuracy = 0.546
 ```
 
 
-## Factor Model (uVS-CNN)
+## Factor Model for User (uVS-CNN)
 
 Evaluate pre-trained factor model on user dataset.
 
 ```bash
-$ python3 eval_factor.py --dataset user
+$ python3 src/eval_factor.py --dataset user
 ```
 
 ```text
 Boston
-Loading data file: ../data/user/val_Boston.txt
+Loading data file: data/user/val_Boston.txt
 Testing: 100%|███████████████████████████████████████████████████████████████████| 1194/1194 [00:48<00:00, 24.41it/s]
 Pointwise Accuracy = 0.664
 Pairwise Accuracy = 0.720

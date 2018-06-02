@@ -9,14 +9,14 @@ from tqdm import tqdm
 # ==================================================
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_string("data_dir", "../data",
+tf.app.flags.DEFINE_string("data_dir", "data",
                            """Path to data folder""")
-tf.app.flags.DEFINE_string("dataset", "business",
+tf.app.flags.DEFINE_string("dataset", "user",
                            """Name of dataset (business or user)""")
 tf.app.flags.DEFINE_integer("batch_size", 64,
                             """Batch Size (default: 64)""")
-tf.app.flags.DEFINE_integer("num_threads", 48,
-                            """Display after number of steps (default: 48)""")
+tf.app.flags.DEFINE_integer("num_threads", 4,
+                            """Number of threads for data processing (default: 4)""")
 tf.app.flags.DEFINE_boolean("allow_soft_placement", True,
                             """Allow device soft device placement""")
 
@@ -25,7 +25,7 @@ num_classes = 2
 cities = ['Boston']
 
 
-checkpoint_dir = "../checkpoints/{}".format(FLAGS.dataset)
+checkpoint_dir = "checkpoints/{}".format(FLAGS.dataset)
 
 
 def eval_fn(model):
@@ -126,7 +126,11 @@ def main(_):
 
       # Place data loading and preprocessing on the cpu
       with tf.device('/cpu:0'):
-        generator = DataGenerator(FLAGS.data_dir, FLAGS.dataset, test_file=val_file, batch_size=FLAGS.batch_size, num_threads=FLAGS.num_threads)
+        generator = DataGenerator(data_dir=FLAGS.data_dir,
+                                  dataset=FLAGS.dataset,
+                                  test_file=val_file,
+                                  batch_size=FLAGS.batch_size,
+                                  num_threads=FLAGS.num_threads)
 
       pointwise_acc, pairwise_acc, count = test(sess, model, generator, accuracy, probs)
       total_pointwise += pointwise_acc * count

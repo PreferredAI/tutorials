@@ -8,13 +8,13 @@ from data_generator import DataGenerator
 
 # Parameters
 # ==================================================
-tf.app.flags.DEFINE_string("data_dir", os.path.join("..", "data"),
+tf.app.flags.DEFINE_string("data_dir", "data",
                            """Path to the data directory""")
 tf.app.flags.DEFINE_string("model", "mlp",
                            """"Type of model (mlp or shallow or deep)""")
-tf.app.flags.DEFINE_string("checkpoint_dir", os.path.join('..', 'checkpoints'),
+tf.app.flags.DEFINE_string("checkpoint_dir", 'checkpoints',
                            """Path to checkpoint folder""")
-tf.app.flags.DEFINE_string("log_dir", os.path.join('..', 'log'),
+tf.app.flags.DEFINE_string("log_dir", 'log',
                            """Path to log folder""")
 
 tf.app.flags.DEFINE_integer("num_checkpoints", 1,
@@ -23,6 +23,8 @@ tf.app.flags.DEFINE_integer("num_epochs", 10,
                             """Number of training epochs""")
 tf.app.flags.DEFINE_integer("batch_size", 32,
                             """Batch Size (default: 32)""")
+tf.app.flags.DEFINE_integer("num_threads", 4,
+                            """Number of threads for data processing (default: 4)""")
 tf.app.flags.DEFINE_integer("display_step", 10,
                             """Display after number of steps""")
 
@@ -43,7 +45,7 @@ def init_data_generator():
   test_file = os.path.join(FLAGS.data_dir, 'test.csv')
   # Place data loading and preprocessing on the cpu
   with tf.device('/cpu:0'):
-    generator = DataGenerator(train_file, test_file, FLAGS.batch_size, num_threads=4)
+    generator = DataGenerator(train_file, test_file, FLAGS.batch_size, FLAGS.num_threads)
   return generator
 
 
