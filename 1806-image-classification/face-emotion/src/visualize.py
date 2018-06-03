@@ -1,17 +1,15 @@
 import os
 import tensorflow as tf
 
-from nn import MLP, Shallow_CNN, Deep_CNN
+from nn import Deep_CNN
 import cv2
 import numpy as np
 
 # Parameters
 # ==================================================
-tf.app.flags.DEFINE_string("data_dir", "test_images",
+tf.app.flags.DEFINE_string("output_dir", "visualization",
                            """Path to the data directory""")
-tf.app.flags.DEFINE_string("model", "mlp",
-                           """"Type of model (mlp or shallow or deep)""")
-tf.app.flags.DEFINE_string("checkpoint_dir", 'checkpoints',
+tf.app.flags.DEFINE_string("checkpoint_dir", 'checkpoints/deep',
                            """Path to checkpoint folder""")
 
 tf.app.flags.DEFINE_boolean("allow_soft_placement", True,
@@ -39,49 +37,43 @@ def load_image(img_file):
   return img.reshape(1, 48, 48, 1)
 
 
-def init_model():
-  # Select the model
-  if FLAGS.model == 'mlp':
-    model = MLP()
-  elif FLAGS.model == 'shallow':
-    model = Shallow_CNN()
-  elif FLAGS.model == 'deep':
-    model = Deep_CNN()
-  else:
-    raise ValueError('--model should be "shallow" or "deep"')
+def vis_conv4(sess, model, img_path):
+  img = load_image(img_path)
+  values = sess.run(model.conv4, feed_dict={model.x: img,
+                                            model.is_training: False})[0]
+  values = values / np.max(values) * 255.0
+  values = np.transpose(values, [2, 0, 1])
 
-  return model
+  A = np.ones([114, 226]) * 50
 
+  for i in range(values.shape[0]):
+    m = 2 + int(np.floor(i / 16)) * 14
+    n = 2 + (i % 16) * 14
+    A[m: m + 12, n: n + 12] = values[i, :]
 
-def to_label(class_idx):
-  labels = {0: 'sad', 1: 'happy'}
-  return labels[class_idx]
+  cv2.imwrite(os.path.join(FLAGS.output_dir, "conv4_{}".format(img_path.split('/')[-1])), A)
 
 
 def main(_):
   # Build Graph
-  model = init_model()
-  prediction = tf.argmax(model.logits, axis=1)
+  model = Deep_CNN()
 
   # Initialize an saver for store model checkpoints
   saver = tf.train.Saver()
-  checkpoint_dir = os.path.join(FLAGS.checkpoint_dir, FLAGS.model)
-  print('\nLoading model from {}\n'.format(checkpoint_dir))
+  print('\nLoading model from {}\n'.format(FLAGS.checkpoint_dir))
 
   # Create a session
   session_conf = tf.ConfigProto(allow_soft_placement=FLAGS.allow_soft_placement)
   with tf.Session(config=session_conf) as sess:
     # Restore trained model
-    saver.restore(sess, tf.train.latest_checkpoint(checkpoint_dir))
+    saver.restore(sess, tf.train.latest_checkpoint(FLAGS.checkpoint_dir))
     print("Model loaded!")
 
-    print('\n{:20} {:20}'.format('Image', 'Predicted As'))
-    print('-' * 40)
-    for img_name in os.listdir(FLAGS.data_dir):
-      img = load_image(os.path.join(FLAGS.data_dir, img_name))
-      label = to_label(sess.run(prediction, feed_dict={model.x: img,
-                                                    model.is_training: False})[0])
-      print('{:20} {:20}'.format(img_name, label))
+    vis_conv4(sess, model, 'data/images/0/130.jpg')
+    vis_conv4(sess, model, 'data/images/0/607.jpg')
+
+    vis_conv4(sess, model, 'data/images/1/82.jpg')
+    vis_conv4(sess, model, 'data/images/1/16335.jpg')
 
 
 if __name__ == '__main__':

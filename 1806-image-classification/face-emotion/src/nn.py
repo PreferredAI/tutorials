@@ -83,9 +83,9 @@ class Deep_CNN(NN):
 
     # Convolutional Layer #3
     conv3 = tf.layers.conv2d(inputs=pool2, filters=128, kernel_size=[3, 3], strides=1, padding="same", activation=tf.nn.relu)
-    conv4 = tf.layers.conv2d(inputs=conv3, filters=128, kernel_size=[3, 3], strides=1, padding="same", activation=tf.nn.relu)
+    self.conv4 = tf.layers.conv2d(inputs=conv3, filters=128, kernel_size=[3, 3], strides=1, padding="same", activation=tf.nn.relu)
     # Pooling Layer #3
-    pool3 = tf.layers.max_pooling2d(inputs=conv4, pool_size=[2, 2], strides=2)
+    pool3 = tf.layers.max_pooling2d(inputs=self.conv4, pool_size=[2, 2], strides=2)
 
     # Flatten out the convolutional layer
     flatten = tf.layers.flatten(pool3)
