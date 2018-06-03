@@ -14,8 +14,8 @@ tf.app.flags.DEFINE_string("data_dir", "data",
                            """Path to data folder""")
 tf.app.flags.DEFINE_string("dataset", "user",
                            """Name of dataset (business or user)""")
-tf.app.flags.DEFINE_integer("num_threads", 4,
-                            """Number of threads for data processing (default: 4)""")
+tf.app.flags.DEFINE_integer("num_threads", 2,
+                            """Number of threads for data processing (default: 2)""")
 tf.app.flags.DEFINE_boolean("allow_soft_placement", True,
                             """Allow device soft device placement""")
 

@@ -23,8 +23,8 @@ tf.app.flags.DEFINE_integer("num_epochs", 10,
                             """Number of training epochs""")
 tf.app.flags.DEFINE_integer("batch_size", 32,
                             """Batch Size (default: 32)""")
-tf.app.flags.DEFINE_integer("num_threads", 4,
-                            """Number of threads for data processing (default: 4)""")
+tf.app.flags.DEFINE_integer("num_threads", 2,
+                            """Number of threads for data processing (default: 2)""")
 tf.app.flags.DEFINE_integer("display_step", 10,
                             """Display after number of steps""")
 

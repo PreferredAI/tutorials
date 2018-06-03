@@ -21,8 +21,8 @@ tf.app.flags.DEFINE_integer("num_checkpoints", 1,
                             """Number of checkpoints to store (default: 1)""")
 tf.app.flags.DEFINE_integer("num_epochs", 30,
                             """Number of training epochs (default: 30)""")
-tf.app.flags.DEFINE_integer("num_threads", 4,
-                            """Number of threads for data processing (default: 4)""")
+tf.app.flags.DEFINE_integer("num_threads", 2,
+                            """Number of threads for data processing (default: 2)""")
 tf.app.flags.DEFINE_integer("display_step", 1000,
                             """Display after number of steps (default: 1000)""")
 

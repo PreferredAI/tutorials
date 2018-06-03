@@ -61,7 +61,7 @@ def to_label(class_idx):
 def main(_):
   # Build Graph
   model = init_model()
-  softmax = tf.argmax(model.logits, axis=1)
+  prediction = tf.argmax(model.logits, axis=1)
 
   # Initialize an saver for store model checkpoints
   saver = tf.train.Saver()
@@ -79,7 +79,7 @@ def main(_):
     print('-' * 40)
     for img_name in os.listdir(FLAGS.data_dir):
       img = load_image(os.path.join(FLAGS.data_dir, img_name))
-      label = to_label(sess.run(softmax, feed_dict={model.x: img,
+      label = to_label(sess.run(prediction, feed_dict={model.x: img,
                                                     model.is_training: False})[0])
       print('{:20} {:20}'.format(img_name, label))
 

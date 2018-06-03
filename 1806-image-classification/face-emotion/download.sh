@@ -6,7 +6,6 @@ if [ -d "data" ]; then
 else
   if [ ! -f 'data.tar.gz' ]; then
     echo 'Data downloading ...'
-    echo
     curl -L 'https://static.preferred.ai/tutorial/face-emotion/data.tar.gz' -o data.tar.gz
   fi
 

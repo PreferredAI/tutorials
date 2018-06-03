@@ -102,7 +102,9 @@ optional arguments:
   --num_checkpoints         NUM_CHECKPOINTS
                               Number of checkpoints to store (default: 1)
   --num_epochs              NUM_EPOCHS
-                              Number of training epochs (default: 10)
+                              Number of training epochs (default: 10)        
+  --num_threads             NUM_THREADS
+                              Number of threads for data processing (default: 2)
   --batch_size              BATCH_SIZE
                               Batch Size (default: 32)
   --dropout_rate            DROPOUT_RATE
