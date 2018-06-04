@@ -48,7 +48,7 @@ def init_model():
   elif FLAGS.model == 'deep':
     model = Deep_CNN()
   else:
-    raise ValueError('--model should be "shallow" or "deep"')
+    raise ValueError('--model should be "mlp", "shallow", or "deep"')
 
   return model
 

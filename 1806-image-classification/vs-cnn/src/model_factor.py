@@ -59,7 +59,6 @@ class FVS_CNN(object):
       self.assign_factor = tf.group(tf.get_variable('weights').assign(self.factor_weights),
                                     tf.get_variable('biases').assign(self.factor_biases))
 
-    # with tf.control_dependencies([assign_weights, assign_biases]):
     fc7_concat = tf.concat([fc7_factor, fc7_shared], axis=1, name='fc7_concat')
 
     # 8th Layer: FC and return unscaled activations

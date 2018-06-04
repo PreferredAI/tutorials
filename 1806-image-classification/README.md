@@ -116,8 +116,6 @@ optional arguments:
 ```
 
 
-## Results
-
 ### Multilayer Perceptron
 
 ```bash
