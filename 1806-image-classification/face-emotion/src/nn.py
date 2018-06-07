@@ -19,7 +19,7 @@ class NN:
 
 class MLP(NN):
   """
-    Definition of MLP network with 2 fully-connected layers of 512 dimensions.
+    Definition of MLP network with 2 fully-connected layers of 128 dimensions.
   """
   def __init__(self, dropout_rate=0.0, num_classes=2):
     NN.__init__(self)
@@ -28,11 +28,11 @@ class MLP(NN):
     features = tf.layers.flatten(self.x)
 
     # Fully-Connected Layer #1
-    fc1 = tf.layers.dense(inputs=features, units=512, activation=tf.nn.relu)
+    fc1 = tf.layers.dense(inputs=features, units=128, activation=tf.nn.relu)
     dropout = tf.layers.dropout(inputs=fc1, rate=dropout_rate, training=self.is_training)
 
     # Fully-Connected Layer #2
-    fc2 = tf.layers.dense(inputs=dropout, units=512, activation=tf.nn.relu)
+    fc2 = tf.layers.dense(inputs=dropout, units=128, activation=tf.nn.relu)
 
     # Output Layer
     self.logits = tf.layers.dense(inputs=fc2, units=num_classes)
@@ -57,7 +57,7 @@ class Shallow_CNN(NN):
     dropout = tf.layers.dropout(flatten, rate=dropout_rate, training=self.is_training)
 
     # Fully-Connected Layer
-    fc = tf.layers.dense(inputs=dropout, units=512, activation=tf.nn.relu)
+    fc = tf.layers.dense(inputs=dropout, units=128, activation=tf.nn.relu)
 
     # Output Layer
     self.logits = tf.layers.dense(inputs=fc, units=num_classes)
@@ -92,7 +92,7 @@ class Deep_CNN(NN):
     dropout = tf.layers.dropout(inputs=flatten, rate=dropout_rate, training=self.is_training)
 
     # Fully-Connected Layer
-    fc = tf.layers.dense(inputs=dropout, units=512, activation=tf.nn.relu)
+    fc = tf.layers.dense(inputs=dropout, units=128, activation=tf.nn.relu)
 
     # Output Layer
     self.logits = tf.layers.dense(inputs=fc, units=num_classes)

@@ -30,11 +30,11 @@ $ chmod +x download.sh | sh download.sh
 
 The data is already split into training and testing sets with the statistics shown in table below.
 
-| Class       | Training (# images) | Test (# images) |
-| :---------: | :-----------------: | :-------------: |
-| happy (1)   | 4347                | 483             |
-| sad (0)     | 4347                | 483             |
-| **Total**   | 8694                | 966             |
+| Class     | Training (# images) | Test (# images) |
+| :-------: | :-----------------: | :-------------: |
+| happy (1) | 4347                | 483             |
+| sad (0)   | 4347                | 483             |
+| **Total** | 8694                | 966             |
 
 ## Model
 
@@ -44,40 +44,40 @@ The MLP architecture can be viewed as:
 
 | Layer     | Dim/Kernel | Parameters                  |
 | :-------: | :--------: | --------------------------: |
-| fc1       | 512        | 48 x 48 x 512+1 = 1,179,649 |
-| fc2       | 512        | 512 x 512+1 = 262,145       |
-| output    | 2          | 512 x 2+1 = 1025            |
-| **Total** |            | 1,442,819                   |
+| fc1       | 128        | 48 x 48 x 128 + 1 = 294,913 |
+| fc2       | 128        | 128 x 128 + 1 = 16,385      |
+| output    | 2          | 128 x 2 + 1 = 257           |
+| **Total** |            | 311,555                     |
 
 ### Shallow CNN
 
 The shallow CNN architecture can be viewed as:
 
-| Layer     | Dim/Kernel | Parameters                       |
-| :-------: | :--------: | -------------------------------: |
-| conv      | 5 x 5      | 5 x 5 x 32+1 = 801               |
-| pool      |            | 0                                |
-| fc        | 512        | 24 x 24 x 32 x 512+1 = 9,437,185 |
-| output    | 2          | 512 x 2+1 = 1025                 |
-| **Total** |            | 9,439,011                        |
+| Layer     | Dim/Kernel | Parameters                         |
+| :-------: | :--------: | ---------------------------------: |
+| conv      | 5 x 5      | 5 x 5 x 32 + 1 = 801               |
+| pool      | 2 x 2      | 0                                  |
+| fc        | 128        | 24 x 24 x 32 x 128 + 1 = 2,359,297 |
+| output    | 2          | 128 x 2 + 1 = 257                  |
+| **Total** |            | 2,360,355                          |
 
 
 ### Deep CNN
 
 The deep CNN architecture can be viewed as:
 
-| Layer     | Dim/Kernel | Parameters                        |
-| :-------: | :--------: | --------------------------------: |
-| conv1     | 5 x 5      | 5 x 5 x 32 + 1 = 801              |
-| pool1     |            | 0                                 |
-| conv2     | 3 x 3      | 3 x 3 x 64 + 1 = 577              |
-| pool2     |            | 0                                 |
-| conv3     | 3 x 3      | 3 x 3 x 128 + 1 = 1153            |
-| conv4     | 3 x 3      | 3 x 3 x 128 + 1 = 1153            |
-| pool3     |            | 0                                 |
-| fc        | 512        | 6 x 6 x 128 x 512 + 1 = 2,359,397 |
-| output    | 2          | 512 x 2 + 1 = 1025                |
-| **Total** |            | 2,364,006                         |
+| Layer     | Dim/Kernel | Parameters                      |
+| :-------: | :--------: | ------------------------------: |
+| conv1     | 5 x 5      | 5 x 5 x 32 + 1 = 801            |
+| pool1     | 2 x 2      | 0                               |
+| conv2     | 3 x 3      | 3 x 3 x 64 + 1 = 577            |
+| pool2     | 2 x 2      | 0                               |
+| conv3     | 3 x 3      | 3 x 3 x 128 + 1 = 1153          |
+| conv4     | 3 x 3      | 3 x 3 x 128 + 1 = 1153          |
+| pool3     | 2 x 2      | 0                               |
+| fc        | 128        | 6 x 6 x 128 x 128 + 1 = 589,825 |
+| output    | 2          | 128 x 2 + 1 = 257               |
+| **Total** |            | 593,766                         |
 
 
 ## Training and Evaluation
@@ -125,9 +125,10 @@ $ python3 src/train.py --model mlp
 ```text
 Epoch number: 1
 Training: 100%|███████████████████████████████████████████████████████████████████| 272/272 [00:10<00:00, 26.85it/s, loss=0.608]
-train_loss = 0.6452, train_acc = 63.61 %
+train_loss = 0.6504, train_acc = 62.43 %
 Testing: 100%|███████████████████████████████████████████████████████████████████| 31/31 [00:00<00:00, 37.88it/s, loss=0.536]
-test_loss = 0.5819, test_acc = 68.74 %
+test_loss = 0.5852, test_acc = 70.29 %
+Saved model checkpoint to checkpoints\mlp\epoch_1
 
 ...
 ...
@@ -135,12 +136,11 @@ test_loss = 0.5819, test_acc = 68.74 %
 
 Epoch number: 10
 Training: 100%|███████████████████████████████████████████████████████████████████| 272/272 [00:09<00:00, 28.55it/s, loss=0.53]
-train_loss = 0.4391, train_acc = 79.03 %
+train_loss = 0.5200, train_acc = 73.98 %
 Testing: 100%|███████████████████████████████████████████████████████████████████| 31/31 [00:00<00:00, 35.52it/s, loss=0.18]
-test_loss = 0.5077, test_acc = 74.53 %
-Saved model checkpoint to checkpoints/mlp/epoch_10
+test_loss = 0.5059, test_acc = 73.40 %
 
-Best accuracy = 74.53 %
+Best accuracy = 75.67 %
 ```
 
 
@@ -153,9 +153,10 @@ $ python3 src/train.py --model shallow
 ```text
 Epoch number: 1
 Training: 100%|███████████████████████████████████████████████████████████████████| 272/272 [00:33<00:00,  8.11it/s, loss=0.594]
-train_loss = 0.6214, train_acc = 65.38 %
+train_loss = 0.6294, train_acc = 64.10 %
 Testing: 100%|███████████████████████████████████████████████████████████████████| 31/31 [00:01<00:00, 22.09it/s, loss=0.396]
-test_loss = 0.5418, test_acc = 73.19 %
+test_loss = 0.5600, test_acc = 71.12 %
+Saved model checkpoint to checkpoints\shallow\epoch_1
 
 ...
 ...
@@ -163,11 +164,11 @@ test_loss = 0.5418, test_acc = 73.19 %
 
 Epoch number: 10
 Training: 100%|███████████████████████████████████████████████████████████████████| 272/272 [00:33<00:00,  8.15it/s, loss=0.64]
-train_loss = 0.2343, train_acc = 90.40 %
+train_loss = 0.3715, train_acc = 83.11 %
 Testing: 100%|███████████████████████████████████████████████████████████████████| 31/31 [00:01<00:00, 20.50it/s, loss=0.108]
-test_loss = 0.4628, test_acc = 78.67 %
+test_loss = 0.4408, test_acc = 78.88 %
 
-Best accuracy = 78.88 %
+Best accuracy = 79.50 %
 ```
 
 ### Deep CNN
@@ -179,9 +180,10 @@ $ python3 src/train.py --model deep
 ```text
 Epoch number: 1
 Training: 100%|███████████████████████████████████████████████████████████████████| 272/272 [01:00<00:00,  4.47it/s, loss=0.649]
-train_loss = 0.6766, train_acc = 56.68 %
+train_loss = 0.6796, train_acc = 56.00 %
 Testing: 100%|███████████████████████████████████████████████████████████████████| 31/31 [00:02<00:00, 13.47it/s, loss=0.639]
-test_loss = 0.6473, test_acc = 62.94 %
+test_loss = 0.6664, test_acc = 58.39 %
+Saved model checkpoint to checkpoints\deep\epoch_1
 
 ...
 ...
@@ -189,11 +191,12 @@ test_loss = 0.6473, test_acc = 62.94 %
 
 Epoch number: 10
 Training: 100%|███████████████████████████████████████████████████████████████████| 272/272 [01:01<00:00,  4.41it/s, loss=0.374]
-train_loss = 0.3042, train_acc = 86.71 %
+train_loss = 0.3226, train_acc = 85.82 %
 Testing: 100%|███████████████████████████████████████████████████████████████████| 31/31 [00:02<00:00, 12.41it/s, loss=0.586]
-test_loss = 0.3569, test_acc = 84.06 %
+test_loss = 0.2970, test_acc = 87.16 %
+Saved model checkpoint to checkpoints\deep\epoch_10
 
-Best accuracy = 86.13 %
+Best accuracy = 87.16 %
 ```
 
 ## Test trained models with other images
@@ -219,12 +222,12 @@ Here we visualize the Deep CNN model with saliency map of images using [Guided B
 
 We may notice that the model focuses more on the mouth with Happy emotion, while other parts of the face are paid attention with Sad emotion.
 
-| Input Image       |  Saliency Map     |  Activation Maps from the 4th Convolutional Layer |  Label |
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/82.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_82.jpg)  |  ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_82.jpg) | Happy
-![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/130.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_130.jpg)  |  ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_130.jpg) | Sad
-![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/791.jpg)  |  ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_791.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_791.jpg) | Happy
-![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/607.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_607.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_607.jpg) | Sad
+| Input Image                                                                                                                      | Saliency Map                                                                                                                                  | Activation Maps of the 4th Convolutional Layer                                                                                       | Label |
+| :------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------: | :---: |
+| ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/82.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_82.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_82.jpg)  | Happy |
+| ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/130.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_130.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_130.jpg) | Sad   |
+| ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/791.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_791.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_791.jpg) | Happy |
+| ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/607.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_607.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_607.jpg) | Sad   |
 
 
 
