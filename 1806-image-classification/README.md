@@ -9,7 +9,7 @@ $ git clone https://github.com/PreferredAI/Tutorials.git
 $ cd Tutorials/1806-image-classification
 ```
 
-Run command below to install some required packages.
+Run command below to install required packages.
 
 ```bash
 $ pip3 install -r requirements.txt
@@ -19,9 +19,9 @@ $ pip3 install -r requirements.txt
 
 ## Dataset
 
-In this tutorial, we provide data consisting of 48x48 pixel grayscale images of faces. The task is to categorize each face based on the emotion shown in the facial expression in to one of two categories (0=Sad, 1=Happy).
+[Facial Expression Recognition](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data) data consists of 48x48 pixel grayscale images of faces. The task is to categorize each face based on the emotion shown in the facial expression in to one of seven categories (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral). In this tutorial, we adapt the original dataset to form a binary classification task which is categorizing each face in to one of two categories (0=Sad, 1=Happy).
 
-I have provided a script to download the dataset. 
+We have provided a script to download the dataset. 
 
 ```bash
 $ cd face-emotion
@@ -204,15 +204,18 @@ Run test script with the model name and path to the folder containing test image
 $ python3 src/test.py --model [model_name] --data_dir [path_to_image_folder]
 ```
 
-Some images are already in *test_images* folder for a quick run.
+Some images are already in *test_images* folder for a quick check.
 
 ```bash
 $ python3 src/test.py --model deep --data_dir test_images
 ```
 
+We also host a [demo website](https://demo.preferred.ai/face-emotion) for you to try it out.
+
+
 ## Visualization
 
-Here we visualize the Deep CNN model with saliency map of images using [Guided Backpropagation](https://arxiv.org/abs/1412.6806) technique, and the activation maps from the 4th convolutional layer of the network.
+Here we visualize the Deep CNN model with saliency map of images using [Guided Backpropagation](https://arxiv.org/abs/1412.6806) technique, and the activation maps of the 4th convolutional layer of the network.
 
 We may notice that the model focuses more on the mouth with Happy emotion, while other parts of the face are paid attention with Sad emotion.
 
@@ -222,7 +225,6 @@ We may notice that the model focuses more on the mouth with Happy emotion, while
 ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/130.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_130.jpg)  |  ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_130.jpg) | Sad
 ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/791.jpg)  |  ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_791.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_791.jpg) | Happy
 ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/607.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_607.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_607.jpg) | Sad
-
 
 
 
@@ -241,7 +243,7 @@ $ chmod +x download.sh | sh download.sh
 
 ## Base Model (VS-CNN)
 
-Evaluate trained base model on user dataset.
+Evaluate the base model on user dataset.
 
 ```bash
 $ python3 src/eval_base.py --dataset user
@@ -261,7 +263,7 @@ Avg. Pointwise Accuracy = 0.546
 
 ## Factor Model for User (uVS-CNN)
 
-Evaluate trained factor model on user dataset.
+Evaluate the factor model on user dataset.
 
 ```bash
 $ python3 src/eval_factor.py --dataset user
