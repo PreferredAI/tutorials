@@ -4,13 +4,13 @@ if [ -d "data" ]; then
   echo "'data' folder already exists!"
   echo "You need to remove it before downloading again."
 else
-  if [ ! -f 'data.tar.gz' ]; then
+  if [ ! -f 'data.zip' ]; then
     echo 'Data downloading ...'
-    curl -L 'https://static.preferred.ai/tutorial/face-emotion/data.tar.gz' -o data.tar.gz
+    curl -L 'https://static.preferred.ai/tutorial/face-emotion/data.zip' -o data.zip
   fi
 
   echo "Data extracting ..."
-  tar -zxf data.tar.gz
-  rm data.tar.gz
+  unzip -q data.zip
+  rm data.zip
   echo "Data is ready!"
 fi

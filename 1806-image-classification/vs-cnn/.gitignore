@@ -1,4 +1,5 @@
 *.gz
+*.zip
 data/
 log/
 checkpoints/

@@ -5,14 +5,14 @@ if [ -d "data" ]; then
   echo "'data' folder already exists!"
   echo "You need to remove it before downloading again."
 else
-  if [ ! -f 'data.tar.gz' ]; then
+  if [ ! -f 'data.zip' ]; then
     echo 'Data downloading ...'
-    curl -L 'https://static.preferred.ai/tutorial/vs-cnn/data.tar.gz' -o data.tar.gz
+    curl -L 'https://static.preferred.ai/tutorial/vs-cnn/data.zip' -o data.zip
   fi
 
   echo "Data extracting ..."
-  tar -zxf data.tar.gz
-  rm data.tar.gz
+  unzip -q data.zip
+  rm data.zip
 fi
 
 echo
@@ -22,14 +22,14 @@ if [ -d "checkpoints" ]; then
   echo "'checkpoints' folder already exists!"
   echo "You need to remove it before downloading again."
 else
-  if [ ! -f 'checkpoints.tar.gz' ]; then
+  if [ ! -f 'checkpoints.zip' ]; then
     echo 'Checkpoints downloading ...'
-    curl -L 'https://static.preferred.ai/tutorial/vs-cnn/checkpoints.tar.gz' -o checkpoints.tar.gz
+    curl -L 'https://static.preferred.ai/tutorial/vs-cnn/checkpoints.zip' -o checkpoints.zip
   fi
 
   echo "Checkpoints extracting ..."
-  tar -zxf checkpoints.tar.gz
-  rm checkpoints.tar.gz
+  unzip -q checkpoints.zip
+  rm checkpoints.zip
 fi
 
 echo
@@ -39,12 +39,12 @@ if [ -d "weights" ]; then
   echo "'weights' folder already exists!"
   echo "You need to remove it before downloading again."
 else
-  if [ ! -f 'weights.tar.gz' ]; then
+  if [ ! -f 'weights.zip' ]; then
     echo 'Weights downloading ...'
-    curl -L 'https://static.preferred.ai/tutorial/vs-cnn/weights.tar.gz' -o weights.tar.gz
+    curl -L 'https://static.preferred.ai/tutorial/vs-cnn/weights.zip' -o weights.zip
   fi
 
   echo "Weights extracting ..."
-  tar -zxf weights.tar.gz
-  rm weights.tar.gz
+  unzip -q weights.zip
+  rm weights.zip
 fi

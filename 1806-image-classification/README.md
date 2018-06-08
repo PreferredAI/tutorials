@@ -1,6 +1,6 @@
 # Prerequisites
 
-This code is written in [Python3](https://www.python.org/downloads/) and requires [TensorFlow 1.7+](https://www.tensorflow.org/install/). In addition, you need to install a few more packages to process data, [Anaconda](https://www.anaconda.com/download/) is recommended for python environment.
+This code is written in Python 3 which can be downloaded from [here](https://www.python.org/downloads/release/python-355/). Please setup the environment if needed.
 
 First, you need to clone our repository.
 
@@ -19,7 +19,8 @@ $ pip3 install -r requirements.txt
 
 ## Dataset
 
-[Facial Expression Recognition](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data) data consists of 48x48 pixel grayscale images of faces. The task is to categorize each face based on the emotion shown in the facial expression in to one of seven categories (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral). In this tutorial, we adapt the original dataset to form a binary classification task which is categorizing each face in to one of two categories (0=Sad, 1=Happy).
+[Facial Expression Recognition](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data) data consists of 48x48 pixel grayscale images of faces. The task is to categorize each face based on the emotion shown in the facial expression in to one of seven categories (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral). \
+In this tutorial, we adapt the original dataset to form a binary classification task which is categorizing each face in to one of two categories (0=Sad, 1=Happy).
 
 We have provided a script to download the dataset. 
 
@@ -28,12 +29,15 @@ $ cd face-emotion
 $ chmod +x download.sh | sh download.sh
 ```
 
+If the script doesn't work, please use this [link](https://static.preferred.ai/tutorial/face-emotion/data.zip) to download the data. \
+After the file is downloaded, you need to unzip it and move *data* folder into our tutorial folder *Tutorials/1806-image-classification/face-emotion*
+
 The data is already split into training and testing sets with the statistics shown in table below.
 
 | Class     | Training (# images) | Test (# images) |
 | :-------: | :-----------------: | :-------------: |
-| happy (1) | 4347                | 483             |
 | sad (0)   | 4347                | 483             |
+| happy (1) | 4347                | 483             |
 | **Total** | 8694                | 966             |
 
 ## Model
@@ -229,6 +233,11 @@ We may notice that the model focuses more on the mouth with Happy emotion, while
 | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/791.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_791.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_791.jpg) | Happy |
 | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/607.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_607.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_607.jpg) | Sad   |
 
+The code for visualization is also provided. You may need to install another additional package in order to generate the saliency maps.
+```bash
+$ pip3 install saliency
+$ python3 src/visualize.py
+``` 
 
 
 # Tutorial #2 - Visual Sentiment Analysis

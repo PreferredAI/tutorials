@@ -1,5 +1,5 @@
-opencv-python
-tqdm
-pandas
-scipy
-saliency
+tensorflow==1.8.0
+numpy==1.14.3
+pandas==0.22.0
+opencv-python==3.4.1.15
+tqdm==4.23.2
