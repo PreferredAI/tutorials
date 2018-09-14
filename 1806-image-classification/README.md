@@ -1,3 +1,5 @@
+*The slides of the presentation can be downloaded [here](https://www.dropbox.com/s/2j7hd9ly3gh923j/tutorial_v2_released.pdf).*
+
 # Prerequisites
 
 This code is written in Python 3 which can be downloaded from [here](https://www.python.org/downloads/release/python-355/). Please setup the environment if needed.
@@ -14,8 +16,6 @@ Run command below to install required packages.
 ```bash
 $ pip3 install -r requirements.txt
 ```
-
-The slides of the presentation can be downloaded [here](https://www.dropbox.com/s/2j7hd9ly3gh923j/tutorial_v2_released.pdf).
 
 # Tutorial #1 - Facial Expression Recognition
 
