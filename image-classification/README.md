@@ -7,8 +7,8 @@ This code is written in Python 3 which can be downloaded from [here](https://www
 First, you need to clone our repository.
 
 ```bash
-$ git clone https://github.com/PreferredAI/Tutorials.git
-$ cd Tutorials/1806-image-classification
+$ git clone https://github.com/PreferredAI/tutorials.git
+$ cd tutorials/1806-image-classification
 ```
 
 Run command below to install required packages.
@@ -32,7 +32,7 @@ $ chmod +x download.sh | sh download.sh
 ```
 
 If the script doesn't work, please use this [link](https://static.preferred.ai/tutorial/face-emotion/data.zip) to download the data. \
-After the file is downloaded, you need to unzip it and move *data* folder into our tutorial folder *Tutorials/1806-image-classification/face-emotion*
+After the file is downloaded, you need to unzip it and move *data* folder into our tutorial folder *tutorials/1806-image-classification/face-emotion*
 
 The data is already split into training and testing sets with the statistics shown in table below.
 
@@ -230,10 +230,10 @@ We may notice that the model focuses more on the mouth with Happy emotion, while
 
 | Input Image                                                                                                                      | Saliency Map                                                                                                                                  | Activation Maps of the 4th Convolutional Layer                                                                                       | Label |
 | :------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------: | :---: |
-| ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/82.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_82.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_82.jpg)  | Happy |
-| ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/130.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_130.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_130.jpg) | Sad   |
-| ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/791.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_791.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_791.jpg) | Happy |
-| ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/607.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_607.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/Tutorials/master/1806-image-classification/face-emotion/visualization/conv4_607.jpg) | Sad   |
+| ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/82.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_82.jpg)  | ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/conv4_82.jpg)  | Happy |
+| ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/130.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_130.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/conv4_130.jpg) | Sad   |
+| ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/791.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_791.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/conv4_791.jpg) | Happy |
+| ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/607.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/saliency_map_607.jpg) | ![](https://raw.githubusercontent.com/PreferredAI/tutorials/master/1806-image-classification/face-emotion/visualization/conv4_607.jpg) | Sad   |
 
 The code for visualization is also provided. You may need to install another additional package in order to generate the saliency maps.
 ```bash
