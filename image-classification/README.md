@@ -1,4 +1,3 @@
-<!-- **The slides of the presentation can be downloaded [here](https://www.dropbox.com/s/2j7hd9ly3gh923j/tutorial_v2_released.pdf).** -->
 
 # Prerequisites
 
