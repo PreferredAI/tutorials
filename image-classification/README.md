@@ -1,4 +1,4 @@
-The slides used for NUS High Workshop can be found at this [link](https://www.dropbox.com/s/im4lajfqifj3ozm/tutorial_v1_released.pdf?dl=0).
+The slides used for NUS High Workshop on 9 Nov'18 can be found at this [link](https://www.dropbox.com/s/im4lajfqifj3ozm/tutorial_v1_released.pdf?dl=0).
 
 # Prerequisites
 
