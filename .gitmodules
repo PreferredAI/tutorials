@@ -1,3 +1,6 @@
 [submodule "venom-tutorial"]
 	path = venom-tutorial
 	url = https://github.com/PreferredAI/venom-tutorial.git
+[submodule "recommendation-retrieval"]
+	path = recommendation-retrieval
+	url = https://github.com/PreferredAI/recommendation-retrieval.git
