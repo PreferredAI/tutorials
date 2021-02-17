@@ -50,10 +50,10 @@ The MLP architecture can be viewed as:
 
 | Layer     | Dim/Kernel | Parameters                  |
 | :-------: | :--------: | --------------------------: |
-| fc1       | 128        | 48 x 48 x 128 + 1 = 294,913 |
-| fc2       | 128        | 128 x 128 + 1 = 16,385      |
-| output    | 2          | 128 x 2 + 1 = 257           |
-| **Total** |            | 311,555                     |
+| fc1       | 128        | 48 x 48 x 128 + 128 = 295,040 |
+| fc2       | 128        | 128 x 128 + 128 = 16,512      |
+| output    | 2          | 128 x 2 + 12 = 258           |
+| **Total** |            | 311,810                     |
 
 ### Shallow CNN
 
@@ -61,11 +61,11 @@ The shallow CNN architecture can be viewed as:
 
 | Layer     | Dim/Kernel | Parameters                         |
 | :-------: | :--------: | ---------------------------------: |
-| conv      | 5 x 5      | 5 x 5 x 32 + 1 = 801               |
+| conv      | 5 x 5      | 5 x 5 x 32 + 32 = 832               |
 | pool      | 2 x 2      | 0                                  |
-| fc        | 128        | 24 x 24 x 32 x 128 + 1 = 2,359,297 |
-| output    | 2          | 128 x 2 + 1 = 257                  |
-| **Total** |            | 2,360,355                          |
+| fc        | 128        | 24 x 24 x 32 x 128 + 128 = 2,359,424 |
+| output    | 2          | 128 x 2 + 2 = 258                  |
+| **Total** |            | 2,360,514                          |
 
 
 ### Deep CNN
@@ -74,16 +74,16 @@ The deep CNN architecture can be viewed as:
 
 | Layer     | Dim/Kernel | Parameters                      |
 | :-------: | :--------: | ------------------------------: |
-| conv1     | 5 x 5      | 5 x 5 x 32 + 1 = 801            |
+| conv1     | 5 x 5      | 5 x 5 x 32 + 32 = 832            |
 | pool1     | 2 x 2      | 0                               |
-| conv2     | 3 x 3      | 3 x 3 x 64 + 1 = 577            |
+| conv2     | 3 x 3      | 3 x 3 x 32 x 64 + 64 = 18,496            |
 | pool2     | 2 x 2      | 0                               |
-| conv3     | 3 x 3      | 3 x 3 x 128 + 1 = 1153          |
-| conv4     | 3 x 3      | 3 x 3 x 128 + 1 = 1153          |
+| conv3     | 3 x 3      | 3 x 3 x 64 x 128 + 128 = 73,856          |
+| conv4     | 3 x 3      | 3 x 3 x 128 x 128 + 128 = 147,584              |
 | pool3     | 2 x 2      | 0                               |
-| fc        | 128        | 6 x 6 x 128 x 128 + 1 = 589,825 |
-| output    | 2          | 128 x 2 + 1 = 257               |
-| **Total** |            | 593,766                         |
+| fc        | 128        | 6 x 6 x 128 x 128 + 128 = 589,952 |
+| output    | 2          | 128 x 2 + 2 = 258               |
+| **Total** |            | 831,106                         |
 
 
 ## Training and Evaluation
