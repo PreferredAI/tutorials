@@ -13,3 +13,28 @@ This folder contains tutorials, written in Jupyter notebooks, for learning and b
 | [07_explanations.ipynb](07_explanations.ipynb) | While the main objective of a recommender system is to identify the items to be recommended to a user, providing explanations to accompany the recommendations would be more persuasive as well as engender trust and transparency.  There are different types of explanations.  In this tutorial, we explore explainable recommendation approaches that rely on user product aspect-level sentiment for modeling explanations. |
 | [08_retrieval.ipynb](08_retrieval.ipynb) | A typical recommender system has two phases.  In the first phase (preference learning), which can be done offline, we learn the model from observations.  In the second phase (retrieval), upon the appearance of a user, we retrieve the top-ranked recommendations for that user.  This latter phase needs to be done online.  In this tutorial, we investigate ways to speed up the retrieval phase by avoiding an exhaustive search over all items.  The focus is on matrix factorization-based recommender systems. |
 | [09_deep_learning.ipynb](09_deep_learning.ipynb) | Recently deep learning has produced significant advancements on various machine learning tasks. To develop an appreciation of how deep learning has an effect on recommender systems, in this tutorial we look into example models from two broad categories. One models collaborative filtering or user-item interaction data, while the other models content associated with items (or users). |
+
+## References
+
+1. Salah, A., Truong, Q. T., & Lauw, H. W. (2020). Cornac: A Comparative Framework for Multimodal Recommender Systems. J. Mach. Learn. Res., 21, 95-1.
+2. Aggarwal, C. C. (2016). Recommender systems (Vol. 1). Cham: Springer International Publishing.
+3. Breese, J. S., Heckerman, D., & Kadie, C. (2013). Empirical analysis of predictive algorithms for collaborative filtering. arXiv preprint arXiv:1301.7363.
+4. Sarwar, B., Karypis, G., Konstan, J., & Riedl, J. (2001, April). Item-based collaborative filtering recommendation algorithms. In Proceedings of the 10th international conference on World Wide Web (pp. 285-295).
+5. Koren, Y., Bell, R., & Volinsky, C. (2009). Matrix factorization techniques for recommender systems. Computer, 42(8), 30-37.
+6. Lee, D. D., & Seung, H. S. (2001). Algorithms for non-negative matrix factorization. In Advances in neural information processing systems (pp. 556-562).
+7. Hu, Y., Koren, Y., & Volinsky, C. (2008, December). Collaborative filtering for implicit feedback datasets. In 2008 Eighth IEEE International Conference on Data Mining (pp. 263-272). Ieee.
+8. Rendle, S., Freudenthaler, C., Gantner, Z., & Schmidt-Thieme, L. (2012). BPR: Bayesian personalized ranking from implicit feedback. arXiv preprint arXiv:1205.2618.
+9. Ma, H., Yang, H., Lyu, M. R., & King, I. (2008, October). Sorec: social recommendation using probabilistic matrix factorization. In Proceedings of the 17th ACM conference on Information and knowledge management (pp. 931-940).
+10. Wang, C., & Blei, D. M. (2011, August). Collaborative topic modeling for recommending scientific articles. In Proceedings of the 17th ACM SIGKDD international conference on Knowledge discovery and data mining (pp. 448-456).
+11. He, R., & McAuley, J. (2016, February). VBPR: visual bayesian personalized ranking from implicit feedback. In Thirtieth AAAI Conference on Artificial Intelligence.
+12. Rendle, S. (2012). Factorization machines with libfm. ACM Transactions on Intelligent Systems and Technology (TIST), 3(3), 1-22.
+13. Zhang, Y., Lai, G., Zhang, M., Zhang, Y., Liu, Y., & Ma, S. (2014). Explicit factor models for explainable recommendation based on phrase-level sentiment analysis. In SIGIR (pp. 83-92).
+14. Wang, N., Wang, H., Jia, Y., & Yin, Y. (2018). Explainable recommendation via multi-task learning in opinionated text data. In SIGIR (pp. 165-174).
+15. Mnih, A., & Salakhutdinov, R. R. (2008). Probabilistic matrix factorization. In Advances in neural information processing systems (pp. 1257-1264).
+16. Le, D. D., & Lauw, H. W. (2020, April). Stochastically robust personalized ranking for lsh recommendation retrieval. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 34, No. 04, pp. 4594-4601).
+17. Bachrach, Y., Finkelstein, Y., Gilad-Bachrach, R., Katzir, L., Koenigstein, N., Nice, N., & Paquet, U. (2014, October). Speeding up the xbox recommender system using a euclidean transformation for inner-product spaces. In Proceedings of the 8th ACM Conference on Recommender systems (pp. 257-264).
+18. Le, D. D., & Lauw, H. W. (2017, November). Indexable Bayesian personalized ranking for efficient top-k recommendation. In Proceedings of the 2017 ACM on Conference on Information and Knowledge Management (pp. 1389-1398).
+19. He, X., Liao, L., Zhang, H., Nie, L., Hu, X., & Chua, T. S. (2017, April). Neural collaborative filtering. In Proceedings of the 26th international conference on world wide web (pp. 173-182).
+20. Liang, D., Krishnan, R. G., Hoffman, M. D., & Jebara, T. (2018, April). Variational autoencoders for collaborative filtering. In Proceedings of the 2018 World Wide Web Conference (pp. 689-698).
+21. Wang, H., Wang, N., & Yeung, D. Y. (2015, August). Collaborative deep learning for recommender systems. In Proceedings of the 21th ACM SIGKDD international conference on knowledge discovery and data mining (pp. 1235-1244).
+22. Kim, D., Park, C., Oh, J., Lee, S., & Yu, H. (2016, September). Convolutional matrix factorization for document context-aware recommendation. In Proceedings of the 10th ACM conference on recommender systems (pp. 233-240).
