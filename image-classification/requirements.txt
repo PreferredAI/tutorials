@@ -1,5 +1,5 @@
 tensorflow>=1.12.1,<2.0
 numpy==1.14.3
 pandas==0.22.0
-opencv-python==3.4.1.15
+opencv-python==4.2.0.32
 tqdm==4.23.2
