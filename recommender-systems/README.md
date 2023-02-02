@@ -1,6 +1,6 @@
 # Recommender Systems
 
-This folder contains tutorials, written in Jupyter notebooks, for learning and building recommendation systems.  The tutorials are sorely based on [Cornac](https://cornac.preferred.ai) library.
+This folder contains tutorials, written in Jupyter notebooks, for learning and building recommendation systems.  The tutorials are solely based on [Cornac](https://cornac.preferred.ai) library.
 
 | Tutorial | Abstract |
 | --- | --- |
